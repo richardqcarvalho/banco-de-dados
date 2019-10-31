@@ -9,6 +9,7 @@ public class App {
     	try {
 			dao.openConnection();
 			dao.create(product);
+			dao.read(product);
 			dao.closeConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();

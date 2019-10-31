@@ -3,6 +3,7 @@ package smk.system;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class ProductDAO {
 	private String url;
 	
 	public ProductDAO(String username, String password) {
-		url = "jdbc:mysql://localhost:3306/products?user=" + username + "&password=" + password + "&useTimezone=true&serverTimezone=UTC";
+		url = "jdbc:mysql://localhost/products?user=" + username + "&password=" + password + "&useTimezone=true&serverTimezone=UTC";
 	}
 	
 	public void create(Product product) throws SQLException {
@@ -26,6 +27,25 @@ public class ProductDAO {
 		stmt.close();
 	}
 	
+	public void read(Product product) throws SQLException {
+		String sql = "select * from product";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				System.out.println("Código: " + rs.getString("id"));
+				System.out.println("Nome: " + rs.getString("product_name"));
+				System.out.println("Categoria: " + rs.getString("category"));
+				System.out.println("Preço: " + rs.getString("price"));
+				System.out.println("Quantidade: " + rs.getString("amount"));
+			}
+			stmt.close();
+
+		} catch(SQLException u) {
+			throw new RuntimeException(u);
+		}
+	}
+
 	public List<Product> read () {
 		return null;
 	}
