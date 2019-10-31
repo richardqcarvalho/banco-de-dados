@@ -11,7 +11,7 @@ public class ProductDAO {
 	private String url;
 	
 	public ProductDAO(String username, String password) {
-		url = "jdbc:mysql://localhost/products?user=" + username + "&password=" + password + "&useTimezone=true&serverTimezone=UTC";
+		url = "jdbc:mysql://localhost:3306/products?user=" + username + "&password=" + password + "&useTimezone=true&serverTimezone=UTC";
 	}
 	
 	public void create(Product product) throws SQLException {
