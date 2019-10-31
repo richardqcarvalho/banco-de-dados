@@ -30,9 +30,9 @@ public class Window extends JFrame {
 		JButton btnClean = new JButton("Limpar");
 		jpnButtons.add(btnClean);
 
-		btnConfirm.addActionListener((event) -> {
+		btnConfirm.addActionListener((ev) -> {
 			ProductDAO dao = new ProductDAO("root", "12345");
-			Product product = new Product (id.getText(), "Produto A", "Tipo B", "Preço C", amount.getText());
+			Product product = new Product(id.getText(), "Produto A", "Tipo B", "Preço C", amount.getText());
 			try {
 				dao.openConnection();
 				dao.create(product);
@@ -40,10 +40,10 @@ public class Window extends JFrame {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		});
 		btnClean.addActionListener((event) -> {
 			id.setText("");
 			amount.setText("");
-		}
+		});
 	}
 }
