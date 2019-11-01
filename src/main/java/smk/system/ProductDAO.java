@@ -17,14 +17,18 @@ public class ProductDAO {
 	
 	public void create(Product product) throws SQLException {
 		String sql = "insert into product (id, product_name, category, price, amount) values (?, ?, ?, ?, ?)";
-		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setString(1, product.getId());
-		stmt.setString(2, product.getName());
-		stmt.setString(3, product.getCategory());
-		stmt.setString(4, product.getPrice());
-		stmt.setString(5, product.getAmount());
-		stmt.execute();
-		stmt.close();
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, product.getId());
+			stmt.setString(2, product.getName());
+			stmt.setString(3, product.getCategory());
+			stmt.setString(4, product.getPrice());
+			stmt.setString(5, product.getAmount());
+			stmt.execute();
+			stmt.close();
+		} catch(SQLException u) {
+			throw new RuntimeException(u);
+		}
 	}
 	
 	public void read(Product product) throws SQLException {
@@ -40,7 +44,6 @@ public class ProductDAO {
 				System.out.println("Quantidade: " + rs.getString("amount"));
 			}
 			stmt.close();
-
 		} catch(SQLException u) {
 			throw new RuntimeException(u);
 		}
