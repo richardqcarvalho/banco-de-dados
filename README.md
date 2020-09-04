@@ -1,6 +1,6 @@
 # Interface de banco de dados usando Java
 
-Este pequeno projeto foi feito como atividade para a cadeira de Paradigmas de Programação, na Universidade Federal do Maranhão, ministrada pelo professor Sérgio Souza.
+Este pequeno projeto foi feito como atividade para a cadeira de Paradigmas de Programação, na Universidade Federal do Maranhão, ministrada pelo professor [Sérgio Souza Costa](https://github.com/profsergiocosta).
 
 # Linguagem utilizada
 
